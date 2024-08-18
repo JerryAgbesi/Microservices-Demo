@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookings-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bookings
+  template:
+    metadata:
+      labels:
+        app: bookings
+    spec:
+      containers:
+      - name: bookings
+        image: jerryelikem/bookings-service:latest
+        ports:
+        - containerPort: 4004
+
+      #   volumeMounts:
+      #   - name: secret-volume
+      #     mountPath: "/etc/config/"   
+      #     subPath: ".env"      
+      #     readOnly: true 
+                        
+      # volumes:
+      # - name: secret-volume
+      #   secret:
+      #     secretName: db-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bookings-service
+spec:
+  selector:
+    app: bookings
+  ports:
+    - protocol: TCP
+      port: 4004
+      targetPort: 4004

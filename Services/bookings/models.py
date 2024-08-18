@@ -4,8 +4,8 @@ from pydantic import BaseModel,Field
 
 class BookingResponse(BaseModel):
     id: int
-    name: str
-    booked_dates: str
+    patron: str
+    movies: list
 
 
     class Config:
@@ -13,6 +13,6 @@ class BookingResponse(BaseModel):
    
 
 class BookingCreate(BaseModel):
-    name: str = Field(...)
-    booked_dates: str = Field(...)
+    patron: str = Field(...)
+    movies: list = Field(...)
 

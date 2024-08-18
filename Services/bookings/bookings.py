@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 from sqlalchemy.orm import Session
 from fastapi import FastAPI,Depends,status,HTTPException
 import logging
+import json
 
 from models import BookingResponse
 from db_handler import Booking,Base,engine,get_db
@@ -18,13 +19,14 @@ app = FastAPI(title = "Booking Service",lifespan=lifespan)
 
 @app.get("/bookings",status_code=status.HTTP_200_OK)
 def get_bookings(db: Session = Depends(get_db)):
-    students = db.query(Booking).all()
-    return students
+    bookings = db.query(Booking).all()
+    return bookings
 
-@app.get("/bookings/{student_name}",status_code=status.HTTP_200_OK,response_model=BookingResponse)
-def get_booking(user_name:int,db: Session = Depends(get_db)):
-    booking = db.query(Booking).filter(Booking.user == user_name).first()
-    if not booking:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="booking not found")
-    
-    return booking
+
+@app.get("/bookings/{patron}", status_code=status.HTTP_200_OK)
+def get_booking(patron: str, db: Session = Depends(get_db)):
+    bookings = db.query(Booking).filter(Booking.patron == patron).all()
+    if not bookings:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="booking not found")
+
+    return bookings

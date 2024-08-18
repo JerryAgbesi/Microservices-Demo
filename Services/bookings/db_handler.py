@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine,Column,Float,Integer,String,ForeignKey,TIMESTAMP,JSON,UUID,Uuid
+from sqlalchemy import create_engine,Column,Float,Integer,String,ForeignKey,Uuid,ARRAY,TIMESTAMP,JSON,UUID
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from dotenv import load_dotenv
@@ -27,5 +27,5 @@ def get_db():
 class Booking(Base):
     __tablename__ = "bookings"
     id = Column(Integer,primary_key=True,index=True)
-    name = Column(String,nullable=False)
-    booked_dates =  Column(JSON, nullable=False, default=dict) 
+    patron = Column(String,nullable=False)
+    movies =  Column(ARRAY(Integer), nullable=False, default=list) 

@@ -1,9 +1,9 @@
 from typing import Optional
 from pydantic import BaseModel,Field
-
+from uuid import UUID
 
 class UserResponse(BaseModel):
-    id: int
+    id: UUID
     name: str
     email: str
 
