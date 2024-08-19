@@ -1,8 +1,9 @@
 # Microservices-Demo
 
 # Overview
-A simplified version of a Movie booking application to demonstrate the Microservice architecture and how to manage it using Kubernetes.
+A simplified version of a Movie booking application to demonstrate the Microservice architecture and how to manage it using Kubernetes. 
 
+The application is made up of three services:
 
 - Movie Service: Provides information like movie ratings, title, etc.
 - Booking Service: Provides booking information.
