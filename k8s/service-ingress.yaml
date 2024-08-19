@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservice-demo-ingress
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /users
+        backend:
+          service:
+            name: users-service
+            port:
+              number: 4007
+      - path: /bookings
+        pathType: Prefix
+        backend:
+          service:
+            name: bookings-service
+            port:
+              number: 4004
+      - path: /movies
+        pathType: Prefix
+        backend:
+          service:
+            name: movies-service
+            port:
+              number: 4001

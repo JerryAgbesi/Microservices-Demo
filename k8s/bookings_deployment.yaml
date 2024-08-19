@@ -18,16 +18,7 @@ spec:
         ports:
         - containerPort: 4004
 
-      #   volumeMounts:
-      #   - name: secret-volume
-      #     mountPath: "/etc/config/"   
-      #     subPath: ".env"      
-      #     readOnly: true 
-                        
-      # volumes:
-      # - name: secret-volume
-      #   secret:
-      #     secretName: db-secret
+
 
 ---
 
