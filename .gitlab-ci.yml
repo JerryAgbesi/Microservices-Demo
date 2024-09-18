@@ -4,4 +4,9 @@ stages:
   - build
   - deploy
 
+before_script:
+  - pip install -r requirements.txt
 
+job1:
+  
+  
