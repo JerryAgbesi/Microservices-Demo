@@ -1,0 +1,14 @@
+{{- range .Values.service}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name | quote }}
+spec:
+  ports:
+    - port: {{ .port }}
+      targetPort: {{ .port }}
+      protocol: TCP
+      name: http
+  selector:
+    {{ .selector | nindent 4 }}
+{{- end }}
