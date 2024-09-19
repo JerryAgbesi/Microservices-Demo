@@ -9,5 +9,8 @@ spec:
       targetPort: {{ .port }}
       protocol: TCP
       name: http
-  selector: {{ .selector }}
+  selector: 
+  {{- with .selector }}
+  {{- toYaml . | nindent 6 }}
+  {{- end }}
 {{- end }}

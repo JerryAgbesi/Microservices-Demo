@@ -41,13 +41,16 @@ deployment:
 
 service:
   - name: movies-service
-    selector: movies
+    selector:
+      app: movies 
     port: 4001
   - name: bookings-service
-    selector: bookings
+    selector: 
+      app: bookings
     port: 4004
   - name: users-service
-    selector: users
+    selector: 
+      app: users 
     port: 4007
 
 
