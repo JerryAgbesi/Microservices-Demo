@@ -9,6 +9,5 @@ spec:
       targetPort: {{ .port }}
       protocol: TCP
       name: http
-  selector:
-    {{ .selector | nindent 4 }}
+  selector: {{ .selector }}
 {{- end }}

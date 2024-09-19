@@ -25,13 +25,12 @@ spec:
             - name: http
               containerPort: {{ .containerPort }}
               protocol: TCP
-        
           {{- if .volumeMounts }}
           volumeMounts:
-            {{- toYaml .volumeMounts | nindent 12 }}
+          {{- toYaml .volumeMounts | nindent 10 }}
           {{- end }}
       {{- if .volumes }}
       volumes:
-        {{- toYaml .volumes | nindent 8 }}
+      {{- toYaml .volumes | nindent 6 }}
       {{- end }}
 {{- end }}
