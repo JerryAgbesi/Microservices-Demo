@@ -33,8 +33,8 @@ deployment:
     containerName: users
     containerPort: 4007
     volumes: 
-      - name: shared-data
-        emptyDir: {}
+      name: shared-data
+      emptyDir: {}
     volumeMounts:
       name: shared-data 
       path: /usr/share/data 
