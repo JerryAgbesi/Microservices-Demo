@@ -21,7 +21,6 @@ spec:
       containers:
         - name: {{ .containerName }}
           image: {{ .image }}
-          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: {{ .containerPort }}
